@@ -1,18 +1,14 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+from github import Github
 
-# Other files and folders
-.settings/
+# First, create a Github instance by passing your access token
+g = Github("<your_access_token>")
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Get the authenticated user
+user = g.get_user()
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Create a new repository
+repo = user.create_repo("my-new-repo")
+
+# Print out the repository's name and description
+print(f"Repo name: {repo.name}")
+print(f"Repo description: {repo.description}")
